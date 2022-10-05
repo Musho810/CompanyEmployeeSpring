@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show All Employee</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>surname</th>
+        <th>email</th>
+        <th>phoneNumber</th>
+        <th>salary</th>
+        <th>position</th>
+        <th>company Name</th>
+        <th>picture</th>
+        <th>remove</th>
+    </tr>
+    <tr th:each="employee:${employeeList}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.surname}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.phoneNumber}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:text="${employee.position}"></td>
+        <td th:text="${employee.company.name}"></td>
+        <td>
+            <img th:if="${employee.profilePic != null}" th:src="@{/employees/getImage(fileName=${employee.profilePic})}">
+            <img th:if="${employee.profilePic == null}" src="/images/222.jpg">
+        </td>
+        <td>
+            <a th:href="@{/employee/remove(id=${employee.id})}">Remove</a>
+        </td>
+    </tr>
+</table>
+<br><br>
+
+<div>
+    <a href="/employee/add">ADD NEW EMPLOYEE</a>
+</div>
+<div>
+<a th:if="${currentUser!=null}" href="/logout">
+    <span>Log Out </span>
+</a>
+</div>
+</body>
+</html>

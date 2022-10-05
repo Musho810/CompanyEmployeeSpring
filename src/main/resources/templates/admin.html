@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin PAGE</title>
+</head>
+<body>
+<a th:if="${currentUser!=null && currentUser.role.name == 'ADMIN'}" href="companies">Companies</a><br>
+<a th:if="${currentUser!=null && currentUser.role.name == 'ADMIN'}" href="employees">EMPLOYEES</a><br>
+<a href="/logout"> LOGOUT</a>
+
+</body>
+</html>

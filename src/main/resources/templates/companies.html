@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show All Componies</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>size</th>
+        <th>address</th>
+        <th>remove</th>
+    </tr>
+    <tr th:each="company:${companies}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.name}"></td>
+        <td th:text="${company.size}"></td>
+        <td th:text="${company.address}"></td>
+        <td>
+            <a th:href="@{/company/remove(id=${company.id})}">Remove</a>
+        </td>
+    </tr>
+</table>
+<br><br>
+<div>
+    <a href="/company/add">ADD NEW COMPANY</a>
+</div>
+<div>
+    <a th:if="${currentUser!=null}" href="/logout">
+        <span>Log Out </span>
+    </a>
+</div>
+
+</body>
+</html>
